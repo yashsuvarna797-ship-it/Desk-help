@@ -1,4 +1,5 @@
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import UserCreationForm, SetPasswordForm, AuthenticationForm, PasswordChangeForm, PasswordResetForm
+
 from django.contrib.auth.models import User
 from django import forms
 
@@ -9,4 +10,13 @@ class SignUpForm(UserCreationForm):
         fields = ['username', 'password1', 'password2', 'email']
 
 class LoginForm(AuthenticationForm):
+    pass
+
+class MyPasswordChangeForm(PasswordChangeForm):
+    pass
+
+class MyPasswordResetForm(PasswordResetForm):
+    pass
+
+class MyResetPasswordForm(SetPasswordForm):
     pass

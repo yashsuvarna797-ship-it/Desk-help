@@ -5,5 +5,12 @@ urlpatterns=[
     path('', views.home_view, name='home'),
     path('Signup', views.signup_view, name='signup'),
     path('Login', views.MyLoginView.as_view(), name='login'),
+    path('PasswordChange', views.MyPasswordChangeView.as_view(), name='password_change'),
+    path('PasswordChangeDone', views.MyPasswordChangeDoneView.as_view(), name='password_change_done'),
+    path('PasswordReset', views.MyPasswordResetView.as_view(), name='password_reset'),
+    path('PasswordResetDone', views.MyPasswordResetDoneView.as_view(), name='password_reset_done'),
+    path('PasswordResetConfirm/<uidb64>/<token>', views.MyPasswordResetConfirmView.as_view(), name='password_reset_confirm'),
+
+
 
 ]
