@@ -1,5 +1,5 @@
 from django.contrib.auth.forms import UserCreationForm, SetPasswordForm, AuthenticationForm, PasswordChangeForm, PasswordResetForm
-
+from . import models
 from django.contrib.auth.models import User
 from django import forms
 
@@ -20,3 +20,8 @@ class MyPasswordResetForm(PasswordResetForm):
 
 class MyResetPasswordForm(SetPasswordForm):
     pass
+
+class TicketForm(forms.ModelForm):
+    class Meta:
+        model = models.Ticket
+        fields = ['title', 'description', 'category']

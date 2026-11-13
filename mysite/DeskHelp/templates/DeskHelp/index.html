@@ -2,5 +2,13 @@
 {% block title %}Home{% endblock %}
 {% block content %}
 
+{% if user.is_authenticated %}
+welcome, {{ user.username }}
+<a href="{% url 'logout' %}">logout</a>
+
+{% else %}
+<a href="{% url 'login' %}">login</a>
+<a href="{% url 'signup' %}">signup</a>
+{% endif %}
 
 {% endblock %}

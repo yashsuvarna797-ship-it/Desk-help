@@ -1,19 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-class Employee(models.Model):
-    name = models.CharField(max_length=40, blank=False)
-    email = models.EmailField(max_length=50, blank=False)
-    employee_id = models.CharField(max_length=8, blank=False, unique=True)
 
-    owner = models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank=True)
-    def __str__(self):
-        return f"{self.id} - {self.name}"
 
 class SupportStaff(models.Model):
     name = models.CharField(max_length=40, blank=False)
     email = models.EmailField(max_length=50, blank=False)
-    staff_id = models.CharField(max_length=8, blank=False, unique=True)
 
     owner = models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank=True)
 
@@ -37,18 +29,18 @@ class Ticket(models.Model):
 
     title = models.CharField(max_length=40, blank=False)
     description=models.TextField(max_length=500, blank=False)
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="OPEN")
-    datetime = models.DateTimeField()
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="OPEN", editable=False)
+    datetime = models.DateTimeField(auto_now_add=True)
     category = models.ForeignKey(Category,
                                 on_delete=models.PROTECT,
                                 related_name="tickets",
                                 null=True,
                                 blank=True)
-    owner = models.ForeignKey(Employee,
-                             on_delete=models.CASCADE,
-                             related_name="created_tickets",
-                             blank=True,
-                             null=True)
+    owner = models.ForeignKey(User,
+                              related_name="ticket_owner",
+                              on_delete=models.CASCADE,
+                              null=True,
+                              blank=True)
     assigned_staff = models.ForeignKey(SupportStaff,
                                        related_name="assigned_tickets",
                                        on_delete = models.SET_NULL,

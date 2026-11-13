@@ -1,7 +1,6 @@
 from django.contrib import admin
-from .models import Employee,SupportStaff,Ticket,Category
+from .models import SupportStaff,Ticket,Category
 
-admin.site.register(Employee)
 admin.site.register(SupportStaff)
 admin.site.register(Ticket)
 admin.site.register(Category)
