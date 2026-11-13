@@ -1,0 +1,17 @@
+{% extends 'DeskHelp/base.html' %}
+{% block title %}Create Ticket{% endblock %}
+{% block content %}
+
+<h1>Display Tickets</h1>
+
+{% if ticket_list %}
+    {% for ticket in ticket_list %}
+    <ul>
+        <li><a href="{% url 'display_ticket_info' ticket.id %}">{{ ticket.title }}</a></li>
+    </ul>
+    {% endfor %}
+
+{% else %}
+    <p>You have not created any tickets yet - <a href="{% url 'create_ticket' %}">create</a></p>
+{% endif %}
+{% endblock %}

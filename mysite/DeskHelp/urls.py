@@ -11,7 +11,9 @@ urlpatterns=[
     path('PasswordReset', views.MyPasswordResetView.as_view(), name='password_reset'),
     path('PasswordResetDone', views.MyPasswordResetDoneView.as_view(), name='password_reset_done'),
     path('PasswordResetConfirm/<uidb64>/<token>', views.MyPasswordResetConfirmView.as_view(), name='password_reset_confirm'),
-    path('CreateTicket', views.CreateTicketView.as_view(), name='create_ticket')
-
+    path('CreateTicket', views.CreateTicketView.as_view(), name='create_ticket'),
+    path('DisplayTickets', views.display_tickets_view, name='display_tickets'),
+    path('DisplayTicketInfo/<int:pk>/', views.display_ticket_info_view, name='display_ticket_info'),
+    
 
 ]

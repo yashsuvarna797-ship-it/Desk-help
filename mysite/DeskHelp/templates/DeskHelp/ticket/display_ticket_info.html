@@ -1,0 +1,20 @@
+{% extends 'DeskHelp/base.html' %}
+{% block title %}Create Ticket{% endblock %}
+{% block content %}
+
+<h1> Ticket info</h1>
+
+{% if ticket %}
+
+    Title - {{ ticket.title }}
+
+    <p>description - {{ ticket.description }}</p>
+    <p>datetime - {{ ticket.datetime }}</p>
+    <p>status - {{ ticket.status }}</p>
+    <p>category - {{ ticket.category }}</p>
+
+
+{% else %}
+    <p>404 ticket not found.</p>
+{% endif %}
+{% endblock %}

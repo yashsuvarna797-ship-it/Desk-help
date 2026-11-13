@@ -4,6 +4,9 @@
 
 {% if user.is_authenticated %}
 welcome, {{ user.username }}
+<p>
+    see all your tickets <a href="{% url 'display_tickets' %}">here</a>
+</p>
 <a href="{% url 'logout' %}">logout</a>
 
 {% else %}

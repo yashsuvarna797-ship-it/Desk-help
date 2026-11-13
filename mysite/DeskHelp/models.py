@@ -29,7 +29,7 @@ class Ticket(models.Model):
 
     title = models.CharField(max_length=40, blank=False)
     description=models.TextField(max_length=500, blank=False)
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="OPEN", editable=False)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="OPEN")
     datetime = models.DateTimeField(auto_now_add=True)
     category = models.ForeignKey(Category,
                                 on_delete=models.PROTECT,

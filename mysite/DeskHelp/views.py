@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.views.generic.edit import FormView
 from . import models
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 def home_view(request):
     return render(request,"DeskHelp/index.html")
@@ -53,7 +54,7 @@ class MyPasswordResetConfirmView(PasswordResetConfirmView):
     template_name = 'DeskHelp/registration/password_reset_confirm.html' 
     success_url = reverse_lazy('login')
 
-class CreateTicketView(FormView):
+class CreateTicketView(LoginRequiredMixin,FormView):
     form_class = forms.TicketForm
     template_name = 'DeskHelp/ticket/create_ticket_form.html' 
     success_url = reverse_lazy('home')
@@ -64,3 +65,13 @@ class CreateTicketView(FormView):
         ticket.save()
 
         return super().form_valid(form)
+
+@login_required
+def display_tickets_view(request):
+    ticket_list = models.Ticket.objects.filter(owner=request.user)
+    return render(request, 'DeskHelp/ticket/display_tickets.html', {'ticket_list':ticket_list})
+
+@login_required
+def display_ticket_info_view(request, pk):
+    ticket = models.Ticket.objects.filter(id=pk).first()
+    return render(request, 'DeskHelp/ticket/display_ticket_info.html', {'ticket':ticket})
