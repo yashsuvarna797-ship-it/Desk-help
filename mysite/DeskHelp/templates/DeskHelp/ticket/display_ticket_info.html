@@ -12,7 +12,7 @@
     <p>datetime - {{ ticket.datetime }}</p>
     <p>status - {{ ticket.status }}</p>
     <p>category - {{ ticket.category }}</p>
-
+    <a href="{% url 'delete_ticket' ticket.id %}">Delete</a>
 
 {% else %}
     <p>404 ticket not found.</p>

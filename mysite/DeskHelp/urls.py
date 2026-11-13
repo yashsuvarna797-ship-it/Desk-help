@@ -14,6 +14,7 @@ urlpatterns=[
     path('CreateTicket', views.CreateTicketView.as_view(), name='create_ticket'),
     path('DisplayTickets', views.display_tickets_view, name='display_tickets'),
     path('DisplayTicketInfo/<int:pk>/', views.display_ticket_info_view, name='display_ticket_info'),
+    path('DeleteTicket/<int:pk>/', views.delete_ticket_view, name='delete_ticket'),
     
 
 ]

@@ -75,3 +75,8 @@ def display_tickets_view(request):
 def display_ticket_info_view(request, pk):
     ticket = models.Ticket.objects.filter(id=pk).first()
     return render(request, 'DeskHelp/ticket/display_ticket_info.html', {'ticket':ticket})
+
+@login_required
+def delete_ticket_view(request, pk):
+    ticket = models.Ticket.objects.filter(id=pk).first().delete()
+    return redirect('display_tickets')
