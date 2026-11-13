@@ -5,7 +5,7 @@ from django.contrib.auth.views import LoginView, PasswordResetDoneView, Password
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
-from django.views.generic.edit import FormView
+from django.views.generic.edit import FormView, UpdateView
 from . import models
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -80,3 +80,12 @@ def display_ticket_info_view(request, pk):
 def delete_ticket_view(request, pk):
     ticket = models.Ticket.objects.filter(id=pk).first().delete()
     return redirect('display_tickets')
+
+class UpdateTicketView(UpdateView):
+    model = models.Ticket
+    fields = ['title', 'description', 'category']
+    template_name = 'DeskHelp/ticket/update_ticket_form.html' 
+    success_url = reverse_lazy('display_tickets')
+
+    def get_queryset(self):
+        return models.Ticket.objects.filter(owner=self.request.user)
