@@ -1,20 +1,13 @@
+
 {% extends 'DeskHelp/base.html' %}
 {% block title %}Home{% endblock %}
+
+
+
 {% block content %}
-
-{% if user.is_authenticated %}
-welcome, {{ user.username }}
-<p>
-    see all your tickets <a href="{% url 'display_tickets' %}">here</a>
-    <p>
-        Create ticket <a href="{% url 'create_ticket' %}">here</a>
-    </p>
-</p>
-<a href="{% url 'logout' %}">logout</a>
-
-{% else %}
-<a href="{% url 'login' %}">login</a>
-<a href="{% url 'signup' %}">signup</a>
-{% endif %}
+    <div class="left-sidebar">
+        hi
+    </div>
+    
 
 {% endblock %}

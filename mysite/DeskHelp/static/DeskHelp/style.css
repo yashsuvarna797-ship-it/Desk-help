@@ -1,0 +1,41 @@
+        :root{
+            --blue:rgba(114, 201, 251, 0.902);
+        }
+
+        body{
+            margin:0;
+        }
+        main{
+            display:flex;
+            height:90vh;
+        }
+        header{
+            background-color:var(--blue);
+            display:flex;
+            margin:0;
+        }
+
+        .top-header h1{
+            margin:0;
+        }
+
+        .top-header{
+            background-color:var(--blue);
+            display:flex;
+            align-items:flex-end;
+            margin:0;
+            height:10vh;
+        }
+
+        .right-header{
+            display:flex;
+            align-items:flex-end;
+            justify-content:flex-end;
+            flex:1;
+        }
+
+        .left-sidebar {
+            background-color: black;
+            width: 10vw;
+            height: 100%;
+        }
