@@ -69,6 +69,19 @@ class CreateTicketView(LoginRequiredMixin,FormView):
 @login_required
 def display_tickets_view(request):
     ticket_list = models.Ticket.objects.filter(owner=request.user)
+
+    status = request.GET.get('status')
+    time = request.GET.get('time')
+
+    if status:
+        ticket_list = ticket_list.filter(status=status)
+
+    if time == 'latest':
+        ticket_list = ticket_list.order_by('-datetime')
+    if time == 'oldest':
+        ticket_list = ticket_list.order_by('datetime')
+
+
     return render(request, 'DeskHelp/ticket/display_tickets.html', {'ticket_list':ticket_list})
 
 @login_required
@@ -88,4 +101,4 @@ class UpdateTicketView(UpdateView):
     success_url = reverse_lazy('display_tickets')
 
     def get_queryset(self):
-        return models.Ticket.objects.filter(owner=self.request.user)
+        return models.Ticket.objects.filter(owner=self.request.user)    

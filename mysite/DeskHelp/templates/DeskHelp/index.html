@@ -6,6 +6,9 @@
 welcome, {{ user.username }}
 <p>
     see all your tickets <a href="{% url 'display_tickets' %}">here</a>
+    <p>
+        Create ticket <a href="{% url 'create_ticket' %}">here</a>
+    </p>
 </p>
 <a href="{% url 'logout' %}">logout</a>
 
