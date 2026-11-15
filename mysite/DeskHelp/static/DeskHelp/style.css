@@ -2,7 +2,10 @@
     --light-blue:#B5D2E6;
     --blue:#326080;
     --skin:#FFF1E7;
-    --brown:#805232;
+    --logo-font:Avantgarde, 
+    "TeX Gyre Adventor", 
+    "URW Gothic L", 
+    sans-serif;
 }
 
 body{
@@ -20,6 +23,15 @@ header{
 
 .top-header h1{
     margin:0;
+    font-family:var(--logo-font);
+    color:var(--skin);
+    font-size:50px;
+    margin-left:10px;
+}
+
+a{
+    color:var(--skin);
+    text-decoration:none;
 }
 
 .top-header{
@@ -37,6 +49,71 @@ header{
     flex:1;
 }
 
+.login{
+    margin: 10px;
+    padding: 8px 20px;
+    color: black;
+    cursor: pointer;
+}
+
+.login:hover{
+    filter:brightness(80%)
+}
+
+.login a{
+    font-family:var(--logo-font);
+    color:var(--skin);
+}
+
+.signup{
+    margin: 10px;
+    padding: 8px 20px;
+    background-color: var(--skin);
+    color: black;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+}
+
+.signup:hover{
+    filter:brightness(80%)
+}
+
+.signup a{
+    font-family:var(--logo-font);
+    color:var(--blue);
+}
+
+.logged-in{
+    margin: 10px;
+    padding: 8px 20px;
+    color: var(--skin);
+    font-family:var(--logo-font);
+}
+
+.logout{
+    margin: 10px;
+    padding: 8px 20px;
+    background-color: var(--skin);
+    color: black;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+}
+
+.logout:hover{
+    filter:brightness(80%)
+}
+
+.logout:hover a{
+    color:red;
+}
+
+.logout a{
+    font-family:var(--logo-font);
+    color:var(--blue);
+}
+
 .content{
     background-color:var(--skin);
     height:100%;
@@ -49,15 +126,15 @@ header{
     display:flex;
     flex-direction:column;
     align-items:center;
-    background-color: var(--blue);
+    background-color: var(--skin);
     width: 15vw;
-    height: 90%;
-    border-radius:15px;
-    margin:15px;
+    height: 100%;
+    border: 10px solid var(--blue);
+    box-sizing:border-box;
 }
 
 .left-sidebar p{
-    color:var(--skin)
+    color:var(--blue)
 }
 
 .ticket-element{
@@ -68,7 +145,6 @@ header{
     background-color:var(--light-blue);
     width:90%;
     height:5%;
-    border-radius:15px;
 }
 
 .ticket-element a {
@@ -78,5 +154,30 @@ header{
 }
 
 .ticket-element:hover{
-    transform:scale(1.07);
+    transform:scale(1.03);
+}
+
+.left-sidebar-top{
+    margin-top:10px;
+    height:7%;
+    width:100%;
+    display:flex;
+    justify-content:space-evenly;
+}
+
+.back-arrow{
+    background-color:var(--blue);
+    height:40px;
+    width:40px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.back-arrow:hover{
+    transform:scale(1.03)
+}
+.back-arrow img{
+    height:30px;
+    width:30px;
 }

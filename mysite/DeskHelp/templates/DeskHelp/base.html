@@ -13,17 +13,26 @@
     <header>
         {% block header %}
             <div class="top-header">
-                <h1>DeskHelp</h1>
+                <h1><a href="{% url 'home' %}">DeskHelp</a></h1>
             </div>
 
             <div class="right-header">
                 {% if user.is_authenticated %}
-                    welcome, {{ user.username }}/
-                    <a href="{% url 'logout' %}">logout</a>
+                    <div class="logged-in">
+                        logged in as, {{ user.username }}
+                    </div>
+                    <div class="logout">
+                        <a href="{% url 'logout' %}">logout</a>
+                    </div>
+
 
                 {% else %}
-                    <a href="{% url 'login' %}">login</a>
-                    <a href="{% url 'signup' %}">signup</a>
+                    <div class="login">
+                        <a href="{% url 'login' %}">login</a>
+                    </div>
+                    <div class="signup">
+                        <a href="{% url 'signup' %}">signup</a>
+                    </div>
                 {% endif %}
             </div>
         {% endblock %}
