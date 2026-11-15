@@ -1,13 +1,20 @@
 
 {% extends 'DeskHelp/base.html' %}
+{% load static %}
 {% block title %}Home{% endblock %}
 
 
 
 {% block content %}
-    <div class="left-sidebar">
-        hi
+    <div class="content">
+        <div class="left-sidebar">
+            
+        </div>
+        <div class="ticket">
+            <img class="create-ticket" src="{% static 'DeskHelp/assets/ticket.png' %}">
+        </div>
     </div>
+
     
 
 {% endblock %}
