@@ -142,6 +142,7 @@ a{
     align-items:center;
     justify-content:center;
     margin:10px;
+    border-radius:5px;
     background-color:var(--light-blue);
     width:90%;
     height:5%;
@@ -151,9 +152,11 @@ a{
     color: var(--blue);
     text-decoration: none;
     transition: transform 0.3s ease;
+    font-family:var(--logo-font);
 }
 
 .ticket-element:hover{
+    filter:brightness(80%);
     transform:scale(1.03);
 }
 
@@ -163,21 +166,103 @@ a{
     width:100%;
     display:flex;
     justify-content:space-evenly;
+    align-items:center;
 }
 
 .back-arrow{
     background-color:var(--blue);
-    height:40px;
-    width:40px;
+    height:30px;
+    width:30px;
     display:flex;
     align-items:center;
     justify-content:center;
 }
 
 .back-arrow:hover{
-    transform:scale(1.03)
+    filter:brightness(80%);
+    transform:scale(1.03);
 }
+
 .back-arrow img{
-    height:30px;
-    width:30px;
+    height:20px;
+    width:20px;
+}
+
+.office{
+    height:1%;
+    width:70%;
+}
+
+.ticket{
+    height:100%;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    border-right: 10px solid var(--blue);
+    border-bottom: 10px solid var(--blue);
+    border-top: 10px solid var(--blue);
+    box-sizing:border-box;
+}
+
+.para{
+    height:50%;
+    width:90%;
+    display:flex;
+    align-items:center;
+    flex-direction:column;
+    padding:10px;
+    box-sizing:border-box;
+}
+
+.heading{
+    color:var(--blue);
+    font-family:var(--logo-font);
+    font-size:50px;
+}
+
+
+
+.content{
+    color:black;
+    font-size:20px;
+    text-align:justify;
+}
+
+
+.ticket-align{
+    height:50%;
+    width:100%;
+    display:flex;
+    justify-content:space-evenly;
+    align-items:center;
+}
+.tickets-info{
+    margin:20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    height:18vh;
+    width:18vw;
+    border-radius:5px;
+    transition: filter 0.3s ease;
+    background-color:var(--light-blue);
+}
+
+.tickets-info:hover{
+    transform:scale(1.03);
+    filter:brightness(80%);
+}
+
+.tickets-info img{
+    height:60%;
+    width:60%;
+}
+
+.tickets-info p{
+    font-size:20px;
+    font-family:var(--logo-font);
+    color:var(--blue)
 }

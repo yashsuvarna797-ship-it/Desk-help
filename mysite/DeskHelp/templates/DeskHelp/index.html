@@ -26,8 +26,32 @@
             {% endif %}
         </div>
         {% endif %}
+
         <div class="ticket">
-            <img class="create-ticket" src="{% static 'DeskHelp/assets/ticket.png' %}">
+            <div class="para">
+                <p class="heading">DeskHelp – IT Helpdesk Management System</p>
+                <p class="content">
+                    DeskHelp is a web-based IT helpdesk management system designed to simplify and streamline the process of handling technical issues within an organisation. It provides a centralised platform where employees can raise support tickets for hardware, software, network, and other IT-related problems. Users can track the status of their submitted tickets, view updates, and manage their requests, while support staff can monitor incoming issues, assign tickets, update their progress, and resolve problems efficiently.
+
+The system aims to improve communication between employees and IT support teams, reduce the complexity of managing support requests, and ensure that issues are properly tracked from submission to resolution. With features such as ticket categorisation, status tracking, user authentication, and ticket management, DeskHelp provides an organised and efficient approach to handling everyday IT support operations.
+                </p>
+            </div>
+            <div class="ticket-align">
+                <a href="{% url 'create_ticket' %}">
+                    <div class="tickets-info">
+                        <img src="{% static 'DeskHelp/assets/ticket.png' %}">
+                        <p>Create Ticket</p>
+                    </div>
+                </a>
+
+                <a href="{% url 'display_tickets' %}">
+                    <div class="tickets-info">
+                        <img src="{% static 'DeskHelp/assets/note.png' %}">
+                        <p>Display Tickets</p>
+                    </div>
+                </a>
+            </div>
+
         </div>
     </div>
 
