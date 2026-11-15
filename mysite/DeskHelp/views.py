@@ -10,7 +10,15 @@ from . import models
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 def home_view(request):
-    return render(request,"DeskHelp/index.html")
+    if request.user.is_authenticated:
+        ticket_list = models.Ticket.objects.filter(owner=request.user)
+
+        return render(request,
+                    "DeskHelp/index.html",
+                    {'ticket_list':ticket_list})
+    else:
+        return  render(request,
+                    "DeskHelp/index.html")
 
 def signup_view(request):
     if request.method == "POST":
