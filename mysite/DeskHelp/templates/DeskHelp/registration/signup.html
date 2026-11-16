@@ -1,13 +1,18 @@
 {% extends 'DeskHelp/base.html' %}
 {% block title %}Signup{% endblock %}
+
 {% block content %}
+<div class="form-content">
+    <div class="form">
+        <h1>Signup</h1>
 
-<h1>Signup</h1>
-
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Sign up</button>
-</form>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Create</button>
+        </form>
+        <a href="{% url 'login' %}">Already have an account?</a>
+    </div>
+</div>
 
 {% endblock %}

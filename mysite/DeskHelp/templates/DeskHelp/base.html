@@ -21,18 +21,20 @@
                     <div class="logged-in">
                         logged in as, {{ user.username }}
                     </div>
-                    <div class="logout">
-                        <a href="{% url 'logout' %}">logout</a>
-                    </div>
+                    
+                    <a href="{% url 'logout' %}">
+                        <div class="logout">logout</div>
+                    </a>
 
 
                 {% else %}
                     <div class="login">
                         <a href="{% url 'login' %}">login</a>
                     </div>
-                    <div class="signup">
-                        <a href="{% url 'signup' %}">signup</a>
-                    </div>
+                    
+                        <a href="{% url 'signup' %}">
+                            <div class="signup">signup</div>
+                        </a>
                 {% endif %}
             </div>
         {% endblock %}
