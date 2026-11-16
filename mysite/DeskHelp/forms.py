@@ -25,3 +25,16 @@ class TicketForm(forms.ModelForm):
     class Meta:
         model = models.Ticket
         fields = ['title', 'description', 'category']
+
+        widgets = {
+            'title': forms.TextInput(attrs={
+                'class':'title-input',
+                'placeholder': 'Enter ticket title',
+            }),
+            'description': forms.Textarea(attrs={
+                'class':'description-input',
+                'placeholder': 'Enter ticket description'
+            }),
+        }
+        
+        

@@ -151,9 +151,10 @@ a{
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 30px;
-    margin: 10px;
-    border-radius: 5px;
+    height: 40px;
+    padding:5px;
+    margin: 5px ;
+    border-radius: 5px ;
     background-color: var(--light-blue);
     transition: transform 0.3s ease;
 }
@@ -286,7 +287,84 @@ a{
     align-items:center;
     justify-content:center;
     flex-direction:column;
-    background-color:var(--light-blue);
+    background-color:var(--blue);
     height:60vh;
-    width:60vh;
+    width:55vh;
+    border-radius:10px;
+}
+
+.form h1{
+    margin:0;
+    color:var(--skin);
+    font-size:40px;
+    font-family:var(--logo-font);
+    font-weight:bold;
+}
+
+.title-input {
+    border:0;
+    width: 100%;
+    padding: 10px;
+    background-color:var(--light-blue);
+    border-radius:10px;
+    border:2px solid var(--light-blue);
+}
+
+.title-input:focus{
+    outline:none;
+    border:2px solid var(--light-blue);
+}
+
+.description-input {
+    border:2px solid var(--light-blue);
+    border-radius:10px;
+    width: 100%;
+    height: 150px;
+    background-color:var(--light-blue);
+}
+
+.description-input:focus{
+    outline:none;
+    border:2px solid var(--light-blue);
+}
+
+label[for="id_title"]{
+    color:var(--skin);
+    font-size:20px;
+    font-weight:bold;
+}
+
+label[for="id_description"]{
+    color:var(--skin);
+    font-size:20px;
+    font-weight:bold;
+}
+
+label[for="id_category"]{
+    color:var(--skin);
+    font-size:20px;
+    font-weight:bold;
+}
+
+button{
+    background-color:var(--skin);
+    border-radius:10px;
+    width: 25%;
+    height: 35px;
+    border:2px solid var(--skin);
+    font-family:var(--logo-font);
+    color:var(--blue);
+    font-weight:bold;    
+    transition: transform 0.3s ease;
+    align-self:center;
+}
+
+button:hover{
+    filter:brightness(80%);
+    transform: scale(1.03);
+}
+
+form{
+    display:flex;
+    flex-direction:column;
 }
