@@ -6,7 +6,7 @@
 
 
 {% block content %}
-    <div class="content">
+    
         {% if user.is_authenticated %}
         <div class="left-sidebar">
             {% if ticket_list %}
@@ -19,9 +19,12 @@
 
                 
                 {% for ticket in ticket_list %}
-                    <div class="ticket-element">
-                        <a href="{% url 'display_ticket_info' ticket.id %}">{{ ticket.title }}</a>
-                    </div>
+                    
+                        <a href="{% url 'display_ticket_info' ticket.id %}" class="widget-link">
+                            <div class="ticket-element">
+                                {{ ticket.title }}
+                            </div>
+                        </a>
                 {% endfor %}
             {% endif %}
         </div>
@@ -53,7 +56,7 @@ The system aims to improve communication between employees and IT support teams,
             </div>
 
         </div>
-    </div>
+    
 
     
 
