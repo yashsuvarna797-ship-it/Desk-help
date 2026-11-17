@@ -2,19 +2,45 @@
 {% block title %}Create Ticket{% endblock %}
 {% block content %}
 
-<h1> Ticket info</h1>
-
-{% if ticket %}
-
-    Title - {{ ticket.title }}
-
-    <p>description - {{ ticket.description }}</p>
-    <p>datetime - {{ ticket.datetime }}</p>
-    <p>status - {{ ticket.status }}</p>
-    <p>category - {{ ticket.category }}</p>
-    <a href="{% url 'delete_ticket' ticket.id %}">Delete</a>
-    <a href="{% url 'update_ticket' ticket.id %}">Update</a>
-{% else %}
-    <p>404 ticket not found.</p>
-{% endif %}
+<div class="display-content">
+    <div class="ticket-details">
+        {% if ticket %}
+        <div class="details-title">
+            Ticket info
+        </div>
+        
+        <div class="details">
+            <div class="sub-detail">
+                Title - {{ ticket.title }}
+            </div>
+            <div class="sub-detail">
+                <p>description - {{ ticket.description }}</p>
+            </div>
+            <div class="sub-detail">
+                <p>datetime - {{ ticket.datetime }}</p>
+            </div>
+            <div class="sub-detail">
+                <p>status - {{ ticket.status }}</p>
+            </div>
+            <div class="sub-detail">
+                <p>category - {{ ticket.category }}</p>
+            </div>
+            <div class="button-div">
+                <a href="{% url 'delete_ticket' ticket.id %}">
+                    <div class="use-button">
+                        Delete
+                    </div>
+                </a>
+                <a href="{% url 'update_ticket' ticket.id %}">
+                    <div class="use-button">
+                        Update
+                    </div>
+                </a>
+            </div>
+        </div>
+        {% else %}
+            <p>404 ticket not found.</p>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}

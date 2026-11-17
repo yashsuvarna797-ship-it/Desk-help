@@ -545,3 +545,69 @@ form{
     font-weight:bold;
     font-family:var(--logo-font);
 }
+
+.ticket-details{
+    margin:50px;
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    flex-direction:column;
+    background-color:var(--blue);
+    height:100%;
+    width:70vh;
+}
+
+.details-title{
+    font-family:var(--logo-font);
+    color:var(--skin);
+    font-weight:bold;
+    font-size:50px;
+    margin:50px;
+}
+
+.details{
+}
+
+.sub-detail{
+    height:fit-content;
+    width:fit-content;
+    background-color:var(--light-blue);
+    color:var(--blue);
+    padding:3px;
+    border-radius:2px;
+    margin-top:10px;
+    margin-left:5px;
+    font-weight:bold;
+    font-family:var(--logo-font)   
+}
+
+.use-button{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background-color:var(--skin);
+    border-radius:10px;
+    width: 100%;
+    height: 30px;
+    border:2px solid var(--skin);
+    font-family:var(--logo-font);
+    color:var(--blue);
+    font-weight:bold;    
+    transition: transform 0.3s ease;
+    font-size:18px;
+    padding-right:10px;
+}
+
+.use-button:hover{
+    filter:brightness(80%);
+    transform: scale(1.03);
+}
+
+.button-div{
+    height:50%;
+    width:100%;
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:space-around;
+}

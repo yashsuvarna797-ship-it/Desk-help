@@ -2,12 +2,18 @@
 {% block title %}Create Ticket{% endblock %}
 {% block content %}
 
-<h1>Update Ticket</h1>
+<div class="form-content">
+    <div class="form">
+        <h1>Create Ticket</h1>
 
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">update</button>
-</form>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Create</button>
+        </form>
+    </div>
+
+
+</div>
 
 {% endblock %}
