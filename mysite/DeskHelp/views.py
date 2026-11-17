@@ -43,7 +43,7 @@ class MyLoginView(LoginView):
     next_page = reverse_lazy('home')
 
 class MyPasswordChangeView(PasswordChangeView): 
-    form_class = forms.PasswordChangeForm
+    form_class = forms.MyPasswordChangeForm
     template_name = 'DeskHelp/registration/password_change_form.html'
 
 class MyPasswordChangeDoneView(PasswordChangeDoneView):
@@ -58,7 +58,7 @@ class MyPasswordResetDoneView(PasswordResetDoneView):
     template_name = 'DeskHelp/registration/password_reset_done.html'
 
 class MyPasswordResetConfirmView(PasswordResetConfirmView):
-    form_class = forms.SetPasswordForm
+    form_class = forms.MyResetPasswordForm
     template_name = 'DeskHelp/registration/password_reset_confirm.html' 
     success_url = reverse_lazy('login')
 

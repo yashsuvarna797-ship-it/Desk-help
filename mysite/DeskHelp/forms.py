@@ -59,13 +59,54 @@ class LoginForm(AuthenticationForm):
         
 
 class MyPasswordChangeForm(PasswordChangeForm):
-    pass
+    old_password = forms.CharField(
+        label='',
+        help_text='',
+        widget=forms.PasswordInput(attrs={
+            'class': 'password-input',
+            'placeholder': 'Current password'
+        })
+    )
+    new_password1 = forms.CharField(
+        label='',
+        help_text='',
+        widget=forms.PasswordInput(attrs={
+            'class': 'password-input',
+            'placeholder': 'New password'
+        })
+    )
+
+    new_password2 = forms.CharField(
+        label='',
+        help_text='',
+        widget=forms.PasswordInput(attrs={
+            'class': 'password-input',
+            'placeholder': 'Confirm new password'
+        })
+    )
 
 class MyPasswordResetForm(PasswordResetForm):
     pass
 
 class MyResetPasswordForm(SetPasswordForm):
-    pass
+    new_password1 = forms.CharField(
+        label='',
+        help_text='',
+        widget=forms.PasswordInput(attrs={
+            'class': 'password-input',
+            'placeholder': 'New password'
+        })
+    )
+
+    new_password2 = forms.CharField(
+        label='',
+        help_text='',
+        widget=forms.PasswordInput(attrs={
+            'class': 'password-input',
+            'placeholder': 'Confirm new password'
+        })
+    )
+
 
 class TicketForm(forms.ModelForm):
     class Meta:
