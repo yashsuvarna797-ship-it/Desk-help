@@ -14,7 +14,8 @@ body{
 }
 main{
     display:flex;
-    height:90vh;
+    min-height:90vh;
+    height:auto;
 }
 header{
     background-color:var(--blue);
@@ -125,7 +126,8 @@ a{
     align-items:center;
     background-color: var(--skin);
     width: 15vw;
-    height: 100%;
+    min-height: 90vh;
+    height:auto;
     border: 10px solid var(--blue);
     box-sizing:border-box;
 }
@@ -195,7 +197,8 @@ a{
 }
 
 .ticket{
-    height:100%;
+    min-height:90vh;
+    height:auto;
     width:100%;
     display:flex;
     flex-direction:column;
@@ -272,7 +275,8 @@ a{
 .form-content{
     border: 10px solid var(--blue);
     background-color:var(--skin);
-    height:100%;
+    min-height:90vh;
+    height:auto;
     width:100%;
     display:flex;
     align-items:center;
@@ -420,7 +424,8 @@ form{
 }
 .display-content{
     background-color:var(--skin);
-    height:100%;
+    min-height:90vh;
+    height:auto;
     width:100%;
     display:flex;
     flex-direction:column;
@@ -436,10 +441,12 @@ form{
 }
 
 .ticket-header{
+    flex-shrink:1;
     width:90%;
-    height:20%;
+    min-height:120px;
     background-color:var(--blue);
-    margin:10px;
+    box-sizing: border-box;
+    margin: 10px 0;
     border-radius:10px;
     display:flex;
     align-items:center;
@@ -471,18 +478,19 @@ form{
     color: #39ff14;
 }
 
-.filter-div{
-    height:10%;
-    width:90%;
-    background-color:var(--blue);
-    margin:10px;
-    border-radius:10px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+.filter-div {
+    width: 90%;
+    min-height: 50px;
+    height: auto;
+    flex-shrink: 1;
+    background-color: var(--blue);
+    margin: 10px 0;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     box-sizing: border-box;
 }
-
 .ticket-template{
     height:12vh;
     width:89vw;
