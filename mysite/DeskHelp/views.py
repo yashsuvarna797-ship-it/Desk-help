@@ -77,20 +77,33 @@ class CreateTicketView(LoginRequiredMixin,FormView):
 @login_required
 def display_tickets_view(request):
     ticket_list = models.Ticket.objects.filter(owner=request.user)
+    ticket_count = ticket_list.count()
+    ticket_resolve = ticket_list.filter(status="RESOLVED").count()
+    ticket_open = ticket_list.filter(status="OPEN").count()
 
     status = request.GET.get('status')
     time = request.GET.get('time')
 
     if status:
         ticket_list = ticket_list.filter(status=status)
+        ticket_count = ticket_list.count()
+        ticket_resolve = ticket_list.filter(status="RESOLVED").count()
+        ticket_open = ticket_list.filter(status="OPEN").count()
 
     if time == 'latest':
         ticket_list = ticket_list.order_by('-datetime')
+
     if time == 'oldest':
         ticket_list = ticket_list.order_by('datetime')
 
 
-    return render(request, 'DeskHelp/ticket/display_tickets.html', {'ticket_list':ticket_list})
+
+    return render(request, 
+                'DeskHelp/ticket/display_tickets.html', 
+                {'ticket_list':ticket_list,
+                 'ticket_count':ticket_count,
+                 'ticket_resolve':ticket_resolve,
+                 'ticket_open':ticket_open})
 
 @login_required
 def display_ticket_info_view(request, pk):
