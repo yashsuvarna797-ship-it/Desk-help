@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse
 from . import forms
 from django.contrib.auth.views import LoginView, PasswordResetDoneView, PasswordResetConfirmView,PasswordChangeView, PasswordChangeDoneView, PasswordResetView
@@ -108,9 +108,7 @@ def display_tickets_view(request):
 
 @login_required
 def display_ticket_info_view(request, pk):
-    ticket = models.Ticket.objects.filter(id=pk).first()
-    comments_list = models.Comment.objects.filter(ticket=ticket)
-    comment_form_new = forms.CommentForm()
+    ticket = get_object_or_404(models.Ticket, id=pk)
     if request.method == 'POST':
         comment_form = forms.CommentForm(request.POST)
 
@@ -119,11 +117,10 @@ def display_ticket_info_view(request, pk):
             form.owner = request.user
             form.ticket = ticket
             form.save()
-            return render(request, 
-                'DeskHelp/ticket/display_ticket_info.html',
-                {'ticket':ticket,
-                'comments_list':comments_list,
-                'comment_form':comment_form_new})
+            return redirect('display_ticket_info', pk=pk)
+    else:
+        comment_form_new = forms.CommentForm()
+    comments_list = models.Comment.objects.filter(ticket=ticket)
 
     return render(request, 
                 'DeskHelp/ticket/display_ticket_info.html',

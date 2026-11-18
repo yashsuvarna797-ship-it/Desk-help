@@ -1,5 +1,5 @@
 {% extends 'DeskHelp/base.html' %}
-{% block title %}Displat Ticket Info{% endblock %}
+{% block title %}Display Ticket Info{% endblock %}
 {% block content %}
 
 <div class="display-content">
@@ -38,11 +38,24 @@
                 </a>
             </div>
 
-                <form method="POST" class="comment-form">
-                    {% csrf_token %}
-                    {{ comment_form.as_p }}
-                    <button type="submit">submit</button>
-                </form>
+            <form method="POST" class="comment-form">
+                {% csrf_token %}
+                {{ comment_form.as_p }}
+                <button type="submit">submit</button>
+            </form>
+
+            {% if comments_list %}
+                {% for comment in comments_list %}
+                <div class="datetime-div">
+                    <div class="comment-div"> 
+                        <p class="comment-owner">{{ comment.owner }}</p>
+                        <p class="comment-content">{{ comment.comment }}</p>
+                        
+                    </div>
+                    <p class="comment-datetime">{{ comment.datetime }}</p>
+                </div>
+                {% endfor %}
+            {% endif %}
         </div>
         {% else %}
             <p>404 ticket not found.</p>
