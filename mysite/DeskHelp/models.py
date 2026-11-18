@@ -50,3 +50,22 @@ class Ticket(models.Model):
     def __str__(self):
         return f"{self.id} - {self.title}"
 
+
+class Comment(models.Model):
+    comment = models.CharField(max_length=100, blank=False)
+    datetime = models.DateTimeField(auto_now_add=True)
+
+    owner = models.ForeignKey(User, 
+                            related_name="comment_owner",
+                            on_delete=models.CASCADE,
+                            null=True,
+                            blank=True)
+
+    ticket = models.ForeignKey(Ticket,
+                               related_name="belonging_ticket",
+                               on_delete=models.CASCADE,
+                               null=True,
+                               blank=True)
+
+    def __str__(self):
+        return f"{self.id} - {self.comment}"

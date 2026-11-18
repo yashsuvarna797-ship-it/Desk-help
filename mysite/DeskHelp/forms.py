@@ -127,4 +127,19 @@ class TicketForm(forms.ModelForm):
             }),
         }
         
-        
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = models.Comment
+        fields = ['comment']
+
+        labels = {
+            'comment':''
+        }
+
+        widgets = {
+            'comment': forms.TextInput(attrs={
+                'class':'title-input',
+                'placeholder':'Comment something.'
+            }),
+        }

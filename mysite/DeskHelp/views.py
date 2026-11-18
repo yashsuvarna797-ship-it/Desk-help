@@ -81,6 +81,7 @@ def display_tickets_view(request):
     ticket_resolve = ticket_list.filter(status="RESOLVED").count()
     ticket_open = ticket_list.filter(status="OPEN").count()
 
+
     status = request.GET.get('status')
     time = request.GET.get('time')
 
@@ -108,7 +109,27 @@ def display_tickets_view(request):
 @login_required
 def display_ticket_info_view(request, pk):
     ticket = models.Ticket.objects.filter(id=pk).first()
-    return render(request, 'DeskHelp/ticket/display_ticket_info.html', {'ticket':ticket})
+    comments_list = models.Comment.objects.filter(ticket=ticket)
+    comment_form_new = forms.CommentForm()
+    if request.method == 'POST':
+        comment_form = forms.CommentForm(request.POST)
+
+        if comment_form.is_valid():
+            form = comment_form.save(commit=False)
+            form.owner = request.user
+            form.ticket = ticket
+            form.save()
+            return render(request, 
+                'DeskHelp/ticket/display_ticket_info.html',
+                {'ticket':ticket,
+                'comments_list':comments_list,
+                'comment_form':comment_form_new})
+
+    return render(request, 
+                'DeskHelp/ticket/display_ticket_info.html',
+                {'ticket':ticket,
+                'comments_list':comments_list,
+                'comment_form':comment_form_new})
 
 @login_required
 def delete_ticket_view(request, pk):

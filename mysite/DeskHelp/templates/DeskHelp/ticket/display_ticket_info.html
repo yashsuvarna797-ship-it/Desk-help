@@ -1,5 +1,5 @@
 {% extends 'DeskHelp/base.html' %}
-{% block title %}Create Ticket{% endblock %}
+{% block title %}Displat Ticket Info{% endblock %}
 {% block content %}
 
 <div class="display-content">
@@ -37,6 +37,12 @@
                     </div>
                 </a>
             </div>
+
+                <form method="POST" class="comment-form">
+                    {% csrf_token %}
+                    {{ comment_form.as_p }}
+                    <button type="submit">submit</button>
+                </form>
         </div>
         {% else %}
             <p>404 ticket not found.</p>
