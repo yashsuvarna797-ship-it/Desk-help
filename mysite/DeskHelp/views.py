@@ -140,4 +140,12 @@ class UpdateTicketView(UpdateView):
     success_url = reverse_lazy('display_tickets')
 
     def get_queryset(self):
-        return models.Ticket.objects.filter(owner=self.request.user)    
+        return models.Ticket.objects.filter(owner=self.request.user)  
+
+@login_required
+def profile_view(request):
+    if request.method == "POST":
+        pass
+    else:
+        user = request.user
+        return render(request, 'DeskHelp/profile.html', {'user': user})  
