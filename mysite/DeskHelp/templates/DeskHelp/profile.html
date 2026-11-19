@@ -1,10 +1,29 @@
 {% extends 'DeskHelp/base.html' %}
 {% block title %}Profile{% endblock %}
 {% block content %}
+{% load static %}
+
 
 <div class="display-content">
-    <img src="{{ request.user.profile.profile_pic.url }}" alt="Profile Picture">
-    {{ user.username }}
+    <div class="user-profile-pic">
+        <img src="{{ request.user.profile.profile_pic.url }}" 
+        class="user-profile" alt="Profile Picture">
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            {{ profile_form.as_p }}
+
+            <button type="submit">Update Profile</button>
+        </form>
+        <!-- <a href="{% url 'profile' %}">
+            <img src="{% static 'DeskHelp/assets/edit.png' %}" 
+            class="edit">
+        </a> -->
+    </div>    
+    <div class="user-details">
+        {{ user.username }}
+    </div>
 </div>
 
 {% endblock %}

@@ -4,7 +4,7 @@ from . import forms
 from django.contrib.auth.views import LoginView, PasswordResetDoneView, PasswordResetConfirmView,PasswordChangeView, PasswordChangeDoneView, PasswordResetView
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import logout
+from django.contrib.auth import logout,login
 from django.views.generic.edit import FormView, UpdateView
 from . import models
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -25,12 +25,12 @@ def signup_view(request):
         form = forms.SignUpForm(request.POST)
         if form.is_valid():
             user = form.save()
-        else:
-            return HttpResponse("Invalid")
-        return redirect('login')
+            models.Profile.objects.create(user=user)
+            login(request,user)
+            return redirect('home')
     else:
         form = forms.SignUpForm()
-        return render(request, 'DeskHelp/registration/signup.html', {'form':form})
+    return render(request, 'DeskHelp/registration/signup.html', {'form':form})
 
 @login_required
 def logout_view(request):
@@ -144,8 +144,21 @@ class UpdateTicketView(UpdateView):
 
 @login_required
 def profile_view(request):
+    profile = request.user.profile
     if request.method == "POST":
-        pass
+        profile_form = forms.ProfileForm(request.POST,
+                                         request.FILES,
+                                         instance=profile)
+        if profile_form.is_valid():
+            profile_form.save()
+            return redirect('profile')
     else:
         user = request.user
-        return render(request, 'DeskHelp/profile.html', {'user': user})  
+        profile_form = forms.ProfileForm(instance=profile)
+    return render(
+                    request,
+                    'DeskHelp/profile.html',
+                    {'user': user,
+                    'profile_form':profile_form}
+                    ) 
+
