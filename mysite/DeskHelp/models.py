@@ -69,3 +69,15 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"{self.id} - {self.comment}"
+
+class Profile(models.Model):
+    user = models.OneToOneField(User,
+                                on_delete=models.CASCADE,
+                                related_name='profile',)
+
+    profile_pic = models.ImageField(upload_to='profile_pics/',
+                                    default='profile_pics/default.png',
+                                    blank=True)
+
+    def __str__(self):
+        return self.user.username

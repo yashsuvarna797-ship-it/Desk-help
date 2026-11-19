@@ -1,8 +1,9 @@
 {% extends 'DeskHelp/base.html' %}
-{% block title %}Create Ticket{% endblock %}
+{% block title %}Profile{% endblock %}
 {% block content %}
 
 <div class="display-content">
+    <img src="{{ request.user.profile.profile_pic.url }}" alt="Profile Picture">
     {{ user.username }}
 </div>
 

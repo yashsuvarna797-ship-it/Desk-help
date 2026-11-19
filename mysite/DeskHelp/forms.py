@@ -143,3 +143,4 @@ class CommentForm(forms.ModelForm):
                 'placeholder':'Comment something.'
             }),
         }
+
