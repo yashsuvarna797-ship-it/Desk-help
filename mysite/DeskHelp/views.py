@@ -142,23 +142,32 @@ class UpdateTicketView(UpdateView):
     def get_queryset(self):
         return models.Ticket.objects.filter(owner=self.request.user)  
 
-@login_required
-def profile_view(request):
-    profile = request.user.profile
-    if request.method == "POST":
-        profile_form = forms.ProfileForm(request.POST,
-                                         request.FILES,
-                                         instance=profile)
-        if profile_form.is_valid():
-            profile_form.save()
-            return redirect('profile')
-    else:
-        user = request.user
-        profile_form = forms.ProfileForm(instance=profile)
-    return render(
-                    request,
-                    'DeskHelp/profile.html',
-                    {'user': user,
-                    'profile_form':profile_form}
-                    ) 
+# @login_required
+# def profile_view(request):
+#     profile = request.user.profile
+#     if request.method == "POST":
+#         profile_form = forms.ProfileForm(request.POST,
+#                                          request.FILES,
+#                                          instance=profile)
+#         if profile_form.is_valid():
+#             profile_form.save()
+#             return redirect('profile')
+#     else:
+#         profile_form = forms.ProfileForm(instance=profile)
+#     return render(
+#                     request,
+#                     'DeskHelp/profile.html',
+#                     {'user': request.user,
+#                     'profile_form':profile_form}
+#                     ) 
 
+class UpdateProfileView(UpdateView):
+    model = models.Profile
+    form_class = forms.ProfileForm
+    template_name = 'DeskHelp/profile.html' 
+    success_url = reverse_lazy('profile')
+
+    def get_object(self):
+        profile,created = models.Profile.objects.get_or_create(user = self.request.user)
+
+        return profile

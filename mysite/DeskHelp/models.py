@@ -79,5 +79,9 @@ class Profile(models.Model):
                                     default='profile_pics/default.png',
                                     blank=True)
 
+    bio = models.TextField(max_length=150, 
+                           blank=True,
+                           default='')
+
     def __str__(self):
         return self.user.username

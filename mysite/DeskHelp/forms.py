@@ -147,4 +147,4 @@ class CommentForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = models.Profile
-        fields = ['profile_pic']
+        fields = ['profile_pic','bio']

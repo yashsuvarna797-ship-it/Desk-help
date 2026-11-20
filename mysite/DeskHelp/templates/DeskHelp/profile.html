@@ -6,13 +6,33 @@
 
 <div class="display-content">
     <div class="user-profile-pic">
-        <img src="{{ request.user.profile.profile_pic.url }}" 
-        class="user-profile" alt="Profile Picture">
-
-        <form method="POST" enctype="multipart/form-data">
+        
+        <form method="POST" class="profile-form" enctype="multipart/form-data">
             {% csrf_token %}
+            <img src="{{ request.user.profile.profile_pic.url }}" 
+            class="user-profile" alt="Profile Picture">
 
-            {{ profile_form.as_p }}
+            <input
+            type="file"
+            name="profile_pic"
+            id="id_profile_pic"
+            accept="image/*"
+            >
+            <label for="id_profile_pic" class="edit-image">
+                <img class="edit" src="{% static 'DeskHelp/assets/edit.png' %}">
+            </label>    
+            
+            <div class="user-details">
+                {{ user.username }}
+            </div>
+
+            <textarea
+                class="bio"
+                name="bio"
+                id="id_bio"
+                rows="5"
+                placeholder="Write something about yourself..."
+            >{{ form.bio.value|default_if_none:"" }}</textarea>
 
             <button type="submit">Update Profile</button>
         </form>
@@ -21,9 +41,6 @@
             class="edit">
         </a> -->
     </div>    
-    <div class="user-details">
-        {{ user.username }}
-    </div>
 </div>
 
 {% endblock %}
