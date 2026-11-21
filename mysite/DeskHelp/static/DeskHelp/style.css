@@ -103,6 +103,28 @@ a{
     color:var(--blue);
 }
 
+.profile-picture{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    height:40px;
+    width:40px;
+    margin: 10px;
+    background-color: var(--skin);
+    color: black;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-family:var(--logo-font);
+    color:var(--blue);
+}
+
+.profile-picture img{
+    height:30px;
+    width:30px;
+    border-radius:40px;
+}
+
 .logout:hover{
     filter:brightness(80%)
 }
@@ -714,6 +736,22 @@ form{
     background-color:var(--skin);
 }
 
+.user-details-bio{
+    display:flex;
+    align-items:flex-start;
+    font-family:var(--logo-font);
+    color:var(--blue);
+    font-size:20px;
+    font-weight:bold;
+    padding:5px;
+    margin-top:50px;
+    min-height: 150px;
+    height: auto;
+    width: 300px;
+    border-radius:4px;
+    background-color:var(--skin);
+}
+
 .edit{
     margin:0;
     height:30px;
@@ -729,6 +767,20 @@ form{
     display:flex;
     flex-direction:row;
     align-items:self-end;
+}
+
+.other-user-profile{
+    margin:70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--blue);
+    height: 75vh;
+    width: 40vw;
+    border-radius: 10px;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 #id_profile_pic{

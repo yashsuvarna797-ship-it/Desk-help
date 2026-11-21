@@ -171,3 +171,12 @@ class UpdateProfileView(UpdateView):
         profile,created = models.Profile.objects.get_or_create(user = self.request.user)
 
         return profile
+
+def other_users_profile_view(request, pk):
+    user = models.User.objects.filter(id=pk).first()
+
+    return render(
+                request,
+                'DeskHelp/other_profile.html', 
+                {'other_user':user}
+                )

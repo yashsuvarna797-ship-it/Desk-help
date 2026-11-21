@@ -48,6 +48,11 @@
                 {% for comment in comments_list %}
                 <div class="datetime-div">
                     <div class="comment-div"> 
+                        <a href="{% url 'user_profile' comment.owner.id %}">
+                            <div class="profile-picture">
+                                <img src="{{ comment.owner.profile.profile_pic.url }}">
+                            </div>
+                        </a>
                         <p class="comment-owner">{{ comment.owner }}</p>
                         <p class="comment-content">{{ comment.comment }}</p>
                         

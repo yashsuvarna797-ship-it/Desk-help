@@ -1,0 +1,21 @@
+{% extends 'DeskHelp/base.html' %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+{% load static %}
+
+
+<div class="display-content">
+    <div class="other-user-profile">
+        
+            <img src="{{ other_user.profile.profile_pic.url }}" 
+            class="user-profile" alt="Profile Picture">
+
+            <div class="user-details">
+                {{ other_user.username }}
+            </div>
+
+            <div class="user-details-bio">{{ other_user.profile.bio }}</div>
+    </div>    
+</div>
+
+{% endblock %}
