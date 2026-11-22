@@ -85,3 +85,24 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
+
+class Notification(models.Model):
+    recipient = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='notification'
+    )
+
+    ticket = models.ForeignKey(
+        Ticket,
+        on_delete=models.CASCADE,
+    )
+
+    comment = models.ForeignKey(
+        Comment,
+        on_delete=models.CASCADE
+    )
+
+    read = models.BooleanField(default=False)
+
+    created_at = models.TimeField(auto_now_add=True)

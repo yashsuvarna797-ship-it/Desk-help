@@ -26,6 +26,20 @@
                         <div class="logout">logout</div>
                     </a>
 
+                    <details>
+                        <summary>
+                            <div class="profile-picture">
+                                <img src="{{ user.profile.profile_pic.url }}">
+                            </div>
+                        </summary>
+                        <p>
+                            {% for notification in notifications %}
+                                {{ notification.recipient }}
+                            {% endfor %}
+                        </p>
+                    </details>
+
+
                     <a href="{% url 'profile' %}">
                         <div class="profile-picture">
                             <img src="{{ user.profile.profile_pic.url }}">

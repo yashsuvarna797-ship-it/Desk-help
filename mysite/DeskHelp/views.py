@@ -118,6 +118,11 @@ def display_ticket_info_view(request, pk):
             form.owner = request.user
             form.ticket = ticket
             form.save()
+            notification = models.Notification.objects.create(
+                recipient=ticket.owner,
+                ticket=ticket,
+                comment=form
+                )
             return redirect('display_ticket_info', pk=pk)
     else:
         comment_form_new = forms.CommentForm()
@@ -153,7 +158,7 @@ class UpdateTicketView(UpdateView):
 #         if profile_form.is_valid():
 #             profile_form.save()
 #             return redirect('profile')
-#     else:
+#     else:n
 #         profile_form = forms.ProfileForm(instance=profile)
 #     return render(
 #                     request,
@@ -182,7 +187,7 @@ def other_users_profile_view(request, pk):
                 {'other_user':user}
                 )
 
-class AllTicketView(TemplateView):
+class AllTicketView( LoginRequiredMixin, TemplateView):
     template_name = "DeskHelp/ticket/display_all_ticket.html"
 
     def get_context_data(self):
