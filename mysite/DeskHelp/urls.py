@@ -17,6 +17,7 @@ urlpatterns=[
     path('DeleteTicket/<int:pk>/', views.delete_ticket_view, name='delete_ticket'),
     path('UpdateTicket/<int:pk>/', views.UpdateTicketView.as_view(), name='update_ticket'),
     path('Profile', views.UpdateProfileView.as_view(), name='profile'),
-    path('UserProfile/<int:pk>/', views.other_users_profile_view, name='user_profile')
+    path('UserProfile/<int:pk>/', views.other_users_profile_view, name='user_profile'),
+    path('AllTickets', views.AllTicketView.as_view(), name='all_tickets'),
 
 ]

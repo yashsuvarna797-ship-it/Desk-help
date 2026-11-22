@@ -1,0 +1,69 @@
+{% extends 'DeskHelp/base.html' %}
+{% block title %}Display All Tickets{% endblock %}
+{% block content %}
+<div class="display-content">
+    <div class="ticket-header">
+        <div class="ticket-info">
+            <p>{{ ticket_count }}</p>
+            <p>TOTAL</p>
+        </div>
+        <div class="ticket-info">
+            <p class="neon-red">{{ ticket_open }}</p>
+            <p>OPEN</p>
+        </div>
+        <div class="ticket-info">
+            <p class="neon-green">{{ ticket_resolve }}</p>
+            <p>RESOLVED</p>
+        </div>
+    </div>
+    <div class="filter-div">
+        <form method="GET">
+            <div class="filter">
+                <select name="status">
+                    <option value="">All statuses</option>
+                    <option value="OPEN">open</option>
+                    <option value="IN_PROGRESS">in progress</option>
+                    <option value="RESOLVED">resolved</option>
+                    <option value="CLOSED">closed</option>
+                </select>
+                <button type="submit">filter</button>
+            </div>
+        </form>
+    </div>
+
+
+    {% if all_tickets %}
+        {% for ticket in all_tickets %}
+            <a href="{% url 'display_ticket_info' ticket.id %}">
+                <div class="ticket-template">
+                    <div class="template-left">
+                        <div class="ticket-title-top">
+                        {{ ticket.title }}
+                        </div>
+                        <div class="ticket-title-bottom">
+                        {{ ticket.category }}
+                        </div>
+                        <div class="ticket-title-top">
+                        owner - {{ ticket.owner }}
+                        </div>
+                    </div>
+                    <div class="template-right">
+                        <div class="ticket-title-top">
+                        {{ ticket.status }}
+                        </div>
+                        <div class="ticket-datetime">
+                        {{ ticket.datetime }}
+                        </div>
+                    </div>
+
+                </div>
+            </a>
+
+        {% endfor %}
+
+    {% else %}
+        <p>No tickets found create -> <a href="{% url 'create_ticket' %}">here</a></p>
+    {% endif %}
+</div>
+
+{% endblock %}

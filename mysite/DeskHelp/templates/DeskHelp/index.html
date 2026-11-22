@@ -49,8 +49,14 @@ The system aims to improve communication between employees and IT support teams,
 
                 <a href="{% url 'display_tickets' %}">
                     <div class="tickets-info">
+                        <img src="{% static 'DeskHelp/assets/user.png' %}">
+                        <p>Display Your Tickets</p>
+                    </div>
+                </a>
+                <a href="{% url 'all_tickets' %}">
+                    <div class="tickets-info">
                         <img src="{% static 'DeskHelp/assets/note.png' %}">
-                        <p>Display Tickets</p>
+                        <p>Display All Tickets</p>
                     </div>
                 </a>
             </div>

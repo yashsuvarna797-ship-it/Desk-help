@@ -25,6 +25,7 @@
             <div class="sub-detail">
                 <p>category - {{ ticket.category }}</p>
             </div>
+            {% if ticket.owner == user %}
             <div class="button-div">
                 <a href="{% url 'delete_ticket' ticket.id %}">
                     <div class="use-button">
@@ -37,6 +38,7 @@
                     </div>
                 </a>
             </div>
+            {% endif %}
 
             <form method="POST" class="comment-form">
                 {% csrf_token %}

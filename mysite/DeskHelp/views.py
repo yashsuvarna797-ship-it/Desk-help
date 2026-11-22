@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout,login
 from django.views.generic.edit import FormView, UpdateView
+from django.views.generic.base import TemplateView 
 from . import models
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -180,3 +181,31 @@ def other_users_profile_view(request, pk):
                 'DeskHelp/other_profile.html', 
                 {'other_user':user}
                 )
+
+class AllTicketView(TemplateView):
+    template_name = "DeskHelp/ticket/display_all_ticket.html"
+
+    def get_context_data(self):
+        all_tickets = models.Ticket.objects.all()
+
+        status = self.request.GET.get('status')
+
+        if status:
+            context = {
+                'all_tickets':all_tickets.filter(status=status),
+                'ticket_count':all_tickets.count(),
+                'ticket_open':all_tickets.filter(status="OPEN").count(),
+                'ticket_resolved':all_tickets.filter(status="RESOLVED").count(),
+            }
+
+        else:
+            context = {
+                'all_tickets':all_tickets,
+                'ticket_count':all_tickets.count(),
+                'ticket_open':all_tickets.filter(status="OPEN").count(),
+                'ticket_resolved':all_tickets.filter(status="RESOLVED").count(),
+            }
+        
+        return context
+
+
