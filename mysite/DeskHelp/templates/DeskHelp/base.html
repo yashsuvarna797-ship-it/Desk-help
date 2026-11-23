@@ -26,17 +26,54 @@
                         <div class="logout">logout</div>
                     </a>
 
-                    <details>
+                    <details class="notification-dropdown">
                         <summary>
                             <div class="profile-picture">
-                                <img src="{{ user.profile.profile_pic.url }}">
+                                <img src="{% static 'DeskHelp/assets/notification.jpg' %}">
                             </div>
                         </summary>
-                        <p>
-                            {% for notification in notifications %}
-                                {{ notification.recipient }}
-                            {% endfor %}
-                        </p>
+
+                        <div class="notifications">
+
+                            <div class="notification-header">
+                                <h3>Notifications</h3>
+                                <span>{{ unread_count }} new</span>
+                            </div>
+
+                            <div class="notification-list">
+                                {% for notification in notifications %}
+                                    <a href="{% url 'display_ticket_info' notification.ticket.id %}"
+                                    class="notification">
+
+                                        <div class="notification-icon">
+                                            <i class="fa-regular fa-comment"></i>
+                                        </div>
+
+                                        <div class="notification-text">
+                                            <p>
+                                                <strong>{{ notification.comment.owner }}</strong>
+                                                commented on your ticket.
+                                            </p>
+
+                                            <small>
+                                                {{ notification.created_at|timesince }} ago
+                                            </small>
+                                        </div>
+
+                                        {% if not notification.is_read %}
+                                            <span class="unread-dot"></span>
+                                        {% endif %}
+
+                                    </a>
+                                {% empty %}
+                                    <div class="empty-notifications">
+                                        <i class="fa-regular fa-bell-slash"></i>
+                                        <p>You're all caught up!</p>
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                        </div>
                     </details>
 
 

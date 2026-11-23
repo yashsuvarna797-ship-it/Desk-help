@@ -830,3 +830,130 @@ form{
     color:var(--blue);
     font-weight:bold;
 }
+.notification-dropdown {
+    position: relative;
+}
+
+.notification-dropdown summary {
+    cursor: pointer;
+    list-style: none;
+}
+
+.notification-dropdown summary::-webkit-details-marker {
+    display: none;
+}
+
+.notifications {
+    position: absolute;
+    top: 55px;
+    right: 0;
+
+    width: 340px;
+    max-height: 400px;
+    overflow-y: auto;
+
+    background: var(--light-blue);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 12px;
+
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    z-index: 1000;
+}
+
+.notification-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 15px 16px;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.notification-header h3 {
+    margin: 0;
+    font-size: 16px;
+    color: var(--blue);
+}
+
+.notification-header span {
+    font-size: 12px;
+    color: var(--blue);
+    opacity: 0.7;
+}
+
+.notification-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.notification {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 14px 16px;
+
+    text-decoration: none;
+    color: var(--blue);
+
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    transition: background 0.2s ease;
+}
+
+.notification:hover {
+    background: rgba(255,255,255,0.55);
+}
+
+.notification-icon {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255,255,255,0.65);
+    border-radius: 50%;
+}
+
+.notification-text {
+    flex: 1;
+    min-width: 0;
+}
+
+.notification-text p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.notification-text small {
+    display: block;
+    margin-top: 4px;
+    font-size: 11px;
+    opacity: 0.65;
+}
+
+.unread-dot {
+    width: 8px;
+    height: 8px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--blue);
+}
+
+.empty-notifications {
+    padding: 30px 15px;
+    text-align: center;
+    color: var(--blue);
+    opacity: 0.7;
+}
+
+.empty-notifications i {
+    font-size: 24px;
+}
+
+.empty-notifications p {
+    font-size: 13px;
+}

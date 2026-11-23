@@ -105,4 +105,4 @@ class Notification(models.Model):
 
     read = models.BooleanField(default=False)
 
-    created_at = models.TimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
