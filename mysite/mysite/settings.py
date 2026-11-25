@@ -133,7 +133,11 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
 
 
-LOGIN_REDIRECT_URL = 'homepage'
+LOGIN_REDIRECT_URL = 'home'
+
+LOGOUT_REDIRECT_URL = 'home'
+
+
 
 MAILERS = {
     'default': {
@@ -168,6 +172,11 @@ SOCIALACCOUNT_PROVIDERS = {
             'client_id': os.environ.get("GOOGLE_CLIENT_ID"),
             'secret': os.environ.get("GOOGLE_SECRET"),
             'key': ''
-        }
+        },
+        'SCOPE':[
+            'profile',
+            'email',
+        ]
+
     }
 }
