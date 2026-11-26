@@ -169,7 +169,7 @@ SOCIALACCOUNT_LOGIN_ON_GET = True
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
-
+    'EMAIL_AUTHENTICATION': True,
         'APP': {
             'client_id': os.environ.get("GOOGLE_CLIENT_ID"),
             'secret': os.environ.get("GOOGLE_SECRET"),
@@ -185,3 +185,5 @@ SOCIALACCOUNT_PROVIDERS = {
 
     }
 }
+
+SOCIALACCOUNT_EMAIL_AUTHENTICATION_AUTO_CONNECT = True
