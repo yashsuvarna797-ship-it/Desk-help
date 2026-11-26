@@ -1,4 +1,6 @@
 {% extends 'DeskHelp/base.html' %}
+{% load static %}
+{% load socialaccount %}
 {% block title %}Login{% endblock %}
 {% block content %}
 <div class="form-content">
@@ -11,6 +13,13 @@
             <button type="submit">Create</button>
         </form>
         <a href="{% url 'password_reset' %}">Forgot password?</a>
+        <a href="{% url 'login' %}">Already have an account?</a>
+        <div class="google-signup">
+            <img src="{% static 'DeskHelp/assets/google.png' %}">
+            <a href="{% provider_login_url 'google' %}">
+                continue with google
+            </a>
+        </div>
     </div>
 </div>
 

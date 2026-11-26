@@ -957,3 +957,30 @@ form{
 .empty-notifications p {
     font-size: 13px;
 }
+
+
+.google-signup{
+    background-color:var(--skin);
+    border-radius:10px;
+    width: 28%;
+    height: 39px;
+    border:2px solid var(--skin);
+    font-family:var(--logo-font);
+    color:var(--blue);
+    font-weight:bold;    
+    transition: transform 0.3s ease;
+    align-self:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:18px;
+}
+.google-signup a{
+    color:var(--blue);
+}
+
+.google-signup img{
+    height:50px;
+    width:50px;
+
+}
